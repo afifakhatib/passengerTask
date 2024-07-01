@@ -1,0 +1,45 @@
+
+
+<div class="passengerContent">
+    <div class="card mb-4 p-2">
+        <div class="card-header">
+            <div class="form-group">
+                <span class="shape"
+                [ngClass]="{
+                    'bg-success' : getPassengerCard.CheckedIndate,
+                    'bg-danger' :  getPassengerCard.CheckedIndate === null
+                }"></span>
+            <!-- <span><strong>Passenger Name : </strong> stephen </span> -->
+             <input type="text" class="form-control p-0 cardInput" placeholder="Enter Passenger Name"
+             [value]="getPassengerCard.Pname"
+              #InputControl disabled #inputRef>
+           </div>
+        </div>
+        <div class="card-body p-2">
+            <span class="m-0">
+                <strong 
+                *ngIf="getPassengerCard.CheckedIndate ; else noChecked">
+                 Checked In date : </strong> {{getPassengerCard.CheckedIndate | date}}
+        </span>
+        <ng-template #noChecked>
+            <span>Not Checked In Yet !! </span>
+        </ng-template>
+
+            <p><strong>Children : </strong> {{getPassengerCard.Childern}}</p>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+            <button class="btn btn-primary btn-sm"
+            (click)="onPassEdit()"
+            #EditRef>Edit</button>
+
+            <button class="btn btn-success btn-sm"
+            style="display : none"
+            (click)="onPassUpdate()"
+            #UpdateRef>Update</button>
+
+            <button class="btn btn-danger btn-sm"
+            (click)="onPassRemove()"
+            #RemoveRef>Remove</button>
+        </div>
+    </div>
+</div>

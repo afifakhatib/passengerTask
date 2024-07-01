@@ -1,0 +1,24 @@
+<section class="passengerInfo">
+    <h1 class="p-4 bg-info text-center font-weight-bold">PASSENGER TASK</h1>
+     <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-1 mb-4">
+                <h2 class="text-capitalize">airline passenger</h2>
+                <p>Total Checked In <strong> {{checkedInArr.length}} / {{passengerData.length}} </strong></p>
+
+                <app-passenger-list
+                [getPassengerList]="passenger"
+                *ngFor="let passenger of passengerData">
+               </app-passenger-list>
+
+            </div>
+            <div class="col-md-10 offset-1">
+                <app-passenger-card 
+                [getPassengerCard]="passenger"
+                *ngFor="let passenger of passengerData"
+                (getEmitCard)="onEmitRemovePass($event)">
+            </app-passenger-card>
+            </div>
+        </div>
+     </div>
+</section>
